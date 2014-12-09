@@ -1,0 +1,24 @@
+#ifndef _OBCTIME_H_
+#define _OBCTIME_H_
+
+
+#define TINYPERIOD (100)//CYCLEPERIODÇ∆çáÇÌÇπÇƒ10secÇ…Ç»ÇÈÇÊÇ§Ç…
+
+#define ZEROPHASE		(22)//220ïb
+#define FIRSTPHASE		(100)//8éûä‘ÅAdebugópÅAâº
+#define SECONDPHASE		(38880)//4ì˙
+
+uint16_t obctime1;
+uint16_t obctime2;
+uint16_t obctime3;
+
+uint8_t tinytime1;
+uint8_t tinytime2;
+uint8_t tinytime3;
+
+
+void getobctime();
+void saveobctime();
+void advanceobctime();
+
+#endif
