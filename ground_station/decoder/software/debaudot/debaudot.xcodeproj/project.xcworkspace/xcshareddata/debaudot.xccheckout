@@ -10,31 +10,31 @@
 	<string>debaudot</string>
 	<key>IDESourceControlProjectOriginsDictionary</key>
 	<dict>
-		<key>C54338439A30C82261D7AD2F7A53FD3368FBD43B</key>
-		<string>https://github.com/ARTSAT/DespatchTelemetry</string>
+		<key>7A9C5EBD30CEA937A687BD5CE299BA5552B8F849</key>
+		<string>https://github.com/ARTSAT/DESPATCH</string>
 	</dict>
 	<key>IDESourceControlProjectPath</key>
-	<string>software/debaudot/debaudot.xcodeproj</string>
+	<string>ground_station/decoder/software/debaudot/debaudot.xcodeproj</string>
 	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
 	<dict>
-		<key>C54338439A30C82261D7AD2F7A53FD3368FBD43B</key>
-		<string>../../../..</string>
+		<key>7A9C5EBD30CEA937A687BD5CE299BA5552B8F849</key>
+		<string>../../../../../..</string>
 	</dict>
 	<key>IDESourceControlProjectURL</key>
-	<string>https://github.com/ARTSAT/DespatchTelemetry</string>
+	<string>https://github.com/ARTSAT/DESPATCH</string>
 	<key>IDESourceControlProjectVersion</key>
 	<integer>111</integer>
 	<key>IDESourceControlProjectWCCIdentifier</key>
-	<string>C54338439A30C82261D7AD2F7A53FD3368FBD43B</string>
+	<string>7A9C5EBD30CEA937A687BD5CE299BA5552B8F849</string>
 	<key>IDESourceControlProjectWCConfigurations</key>
 	<array>
 		<dict>
 			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
 			<string>public.vcs.git</string>
 			<key>IDESourceControlWCCIdentifierKey</key>
-			<string>C54338439A30C82261D7AD2F7A53FD3368FBD43B</string>
+			<string>7A9C5EBD30CEA937A687BD5CE299BA5552B8F849</string>
 			<key>IDESourceControlWCCName</key>
-			<string>DespatchTelemetry</string>
+			<string>DESPATCH</string>
 		</dict>
 	</array>
 </dict>
