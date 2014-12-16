@@ -7,4 +7,5 @@ o spacecraft/main : contains main OBC's CAD data and source codes.
 o spacecraft/mission : contains mission board's CAD data and source codes.  
 o ground_station/decoder :  contains telemetry decoding software.  
 o ground_station/tracker :  contains tracking software.  
+o ground_station/server : contains API server software.  
 o document : contains some specifications of morse and baudot code format, etc...  
