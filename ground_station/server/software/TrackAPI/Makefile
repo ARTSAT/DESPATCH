@@ -1,4 +1,4 @@
-TRACKER_DIR = ../../../tracker/software/SCTracker
+TRACKER_DIR = ../../../tracker/software/core/SCTracker
 TARGET = server
 LIB = $(TRACKER_DIR)/libsctracker.a
 
