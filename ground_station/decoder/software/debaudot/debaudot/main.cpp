@@ -51,15 +51,15 @@
 using namespace::std;
 
 static char const* baudot_table_ltrs[] = {
-    "<N>",
+    "N",
     "e",
-    "<LF>",
+    "[LF]",
     "a",
     " ",
     "s",
     "i",
     "u",
-    "<CR>",
+    "[CR]",
     "d",
     "r",
     "j",
@@ -78,22 +78,22 @@ static char const* baudot_table_ltrs[] = {
     "o",
     "b",
     "g",
-    "<F>",
+    "F",
     "m",
     "x",
     "v",
-    "<L>"
+    "L"
 };
 static char const* baudot_table_figs[] = {
-    "<N>",
+    "N",
     "3",
-    "<LF>",
+    "[LF]",
     "-",
     " ",
     "'",
     "8",
     "7",
-    "<CR>",
+    "[CR]",
     "$",
     "4",
     "'",
@@ -112,11 +112,11 @@ static char const* baudot_table_figs[] = {
     "9",
     "?",
     "&",
-    "<F>",
+    "F",
     ".",
     "/",
     ";",
-    "<L>"
+    "L"
 };
 
 bool is_01(string const& param)
@@ -225,19 +225,19 @@ bool debaudot(string const& param, string* decode, int* size)
                 bits15 <<= 5;
                 bits15 |= data;
                 if (--raw <= 0) {
-                    snprintf(temp, sizeof(temp), "<%d>", bits15);
+                    snprintf(temp, sizeof(temp), "[%d]", bits15);
                     *decode += temp;
                 }
             }
             else {
                 value = (ltrs) ? (baudot_table_ltrs[data]) : (baudot_table_figs[data]);
-                if (value == "<L>") {
+                if (value == "L") {
                     ltrs = true;
                 }
-                else if (value == "<F>") {
+                else if (value == "F") {
                     ltrs = false;
                 }
-                else if (value == "<N>") {
+                else if (value == "N") {
                     raw = 3;
                     bits15 = 0;
                 }
