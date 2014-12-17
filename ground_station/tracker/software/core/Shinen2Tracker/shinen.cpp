@@ -11,7 +11,7 @@
 ********************************************************************************/
 #include "shinen.h"
 
-const double Shinen2Tracker:: SecondsRadioStop_ = (20.0 * 24.0) * 3600.0;
+const double Shinen2Tracker:: SecondsRadioStop_ = (30.0 * 24.0) * 3600.0;
 
 Shinen2Tracker:: Shinen2Tracker (void) : SpacecraftTracker (), departureMjd_ (0.0)
 {
