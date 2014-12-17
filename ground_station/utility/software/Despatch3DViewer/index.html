@@ -1,0 +1,369 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<title>DESPATCH - 3D Viewer</title>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0">
+		<style>
+			body {
+				font-family: Monospace;
+				background-color: #000000;
+				margin: 0px;
+				overflow: hidden;
+			}
+
+			#info {
+				color: #fff;
+				position: absolute;
+				top: 10px;
+				width: 100%;
+				text-align: center;
+				z-index: 100;
+				display:block;
+
+			}
+			
+			#loading {
+				position: absolute;
+				left: 50%;
+				top: 50%;
+				margin-left:-30px;
+			}
+
+			a { color: skyblue }
+			.button { background:#999; color:#eee; padding:0.2em 0.5em; cursor:pointer }
+			.highlight { background:orange; color:#fff; }
+
+			span {
+				display: inline-block;
+				width: 60px;
+				float: left;
+				text-align: center;
+			}
+
+		</style>
+	</head>
+	
+	<body>
+		<div id="info">
+			<a href="http://artsat.jp/despatch" target="_blank">ARTSAT2:DESPATCH</a> -
+			3D Viewer by <a href="https://github.com/ARTSAT/DESPATCH" target="_blank">ARTSAT Project</a>
+		</div>
+		
+		<div id="loading">
+			<img src="images/loading.gif">
+		</div>
+
+		<script src="js/three.min.js"></script>
+		<script src="js/STLLoader.js"></script>
+		<script src="js/Detector.js"></script>
+		<script src="js/stats.min.js"></script>
+		<script src="js/OrbitControls.js"></script>
+		<script src="js/jquery-2.1.0.min.js"></script>
+
+		<script>
+		
+			if (!Detector.webgl) {
+				
+				Detector.addGetWebGLMessage ();
+				
+				$("#loading").fadeOut();
+			}
+			
+			var container, stats;
+			
+			var camera, scene, renderer;
+			var controls;	// camera control
+			
+			var uzumaki_mesh, cover_mesh, base_mesh, pafif_mesh, stay_mesh;
+			
+			var timer;
+			
+			init();
+			animate();
+			
+			function init () {
+				
+				container = document.createElement ('div');
+				document.body.appendChild (container);
+				
+				// camera
+				camera = new THREE.PerspectiveCamera (35, window.innerWidth / window.innerHeight, 1, 10000 );
+				
+				camera.up.x = 0;
+				camera.up.y = 1;
+				camera.up.z = 0;
+				
+				camera.position.x = 3.0;
+				camera.position.y = 0.0;
+				camera.position.z = 0.0;
+				
+				camera.lookAt (new THREE.Vector3 (0, 0, 0));
+				
+				// scene
+				scene = new THREE.Scene ();
+
+				// meshes
+				const Scale = 0.002;
+				const TransVec = new THREE.Matrix4 ().makeTranslation (-250, 0, 0);
+				
+				// mesh for uzumaki
+				var uzumakiLoader = new THREE.STLLoader ();
+				uzumakiLoader.addEventListener ('load', function (event) {
+					
+					var geometry = event.content;
+					geometry.applyMatrix (TransVec);
+					
+					var material = new THREE.MeshPhongMaterial ({ambient: 0xffffff, color: 0xffffff, specular: 0x222222, shininess: 50});
+					
+					uzumaki_mesh = new THREE.Mesh (geometry, material);
+					
+					uzumaki_mesh.position.set (0, 0, 0);
+					uzumaki_mesh.scale.set (Scale, Scale, Scale);
+					
+					uzumaki_mesh.castShadow = true;
+					uzumaki_mesh.receiveShadow = true;
+					
+					scene.add (uzumaki_mesh);
+				});
+				uzumakiLoader.load ('models/despatch_uzumaki.stl');
+				
+				// mesh for cover
+				var coverLoader = new THREE.STLLoader ();
+				coverLoader.addEventListener ('load', function (event) {
+					
+					var geometry = event.content;
+					geometry.applyMatrix (TransVec);
+					
+					var material = new THREE.MeshPhongMaterial ({ambient: 0xffffff, color: 0x222222, specular: 0xffffff, shininess: 200});
+					
+					cover_mesh = new THREE.Mesh (geometry, material);
+					
+					cover_mesh.position.set (0, 0, 0);
+					cover_mesh.scale.set (Scale, Scale, Scale);
+					
+					cover_mesh.castShadow = true;
+					cover_mesh.receiveShadow = true;
+					
+					scene.add (cover_mesh);
+				});
+				coverLoader.load ('models/despatch_cover.stl');
+				
+				// mesh for base
+				var baseLoader = new THREE.STLLoader ();
+				baseLoader.addEventListener ('load', function (event) {
+					
+					var geometry = event.content;
+					geometry.applyMatrix (TransVec);
+					
+					var material = new THREE.MeshPhongMaterial ({ambient: 0x555555, color: 0x3A322B, specular: 0x95411C, shininess: 200});
+					
+					base_mesh = new THREE.Mesh (geometry, material);
+					
+					base_mesh.position.set (0, 0, 0);
+					base_mesh.scale.set (Scale, Scale, Scale);
+					
+					base_mesh.castShadow = true;
+					base_mesh.receiveShadow = true;
+					
+					scene.add (base_mesh);
+				});
+				baseLoader.load ('models/despatch_base.stl');
+				
+				// mesh for paf-interface
+				var pafifLoader = new THREE.STLLoader ();
+				pafifLoader.addEventListener ('load', function (event) {
+					
+					var geometry = event.content;
+					geometry.applyMatrix (TransVec);
+					
+					var material = new THREE.MeshPhongMaterial ({ambient: 0x555555, color: 0x3A322B, specular: 0x95411C, shininess: 200});
+					
+					pafif_mesh = new THREE.Mesh (geometry, material);
+					
+					pafif_mesh.position.set (0, 0, 0);
+					pafif_mesh.scale.set (Scale, Scale, Scale);
+					
+					pafif_mesh.castShadow = true;
+					pafif_mesh.receiveShadow = true;
+					
+					scene.add (pafif_mesh);
+				});
+				pafifLoader.load ('models/despatch_pafif.stl');
+				
+				// mesh for stay
+				var stayLoader = new THREE.STLLoader ();
+				stayLoader.addEventListener ('load', function (event) {
+					
+					var geometry = event.content;
+					geometry.applyMatrix (TransVec);
+					
+					var material = new THREE.MeshPhongMaterial ({ambient: 0xffffff, color: 0xffffff, specular: 0x222222, shininess: 100});
+					
+					stay_mesh = new THREE.Mesh (geometry, material);
+					
+					stay_mesh.position.set (0, 0, 0);
+					stay_mesh.scale.set (Scale, Scale, Scale);
+					
+					stay_mesh.castShadow = true;
+					stay_mesh.receiveShadow = true;
+					
+					scene.add (stay_mesh);
+				});
+				stayLoader.load ('models/despatch_stay.stl');
+				
+				// lights
+				scene.add (new THREE.AmbientLight (0x999999));
+				
+				addShadowedLight (3, 0, 0, 0xddeeff, 1);
+				addShadowedLight (-10, 0, 0, 0xddeeff, 1);
+				
+				// renderer
+				renderer = new THREE.WebGLRenderer ({antialias: true});
+				renderer.setSize (window.innerWidth, window.innerHeight);
+				
+				renderer.gammaInput = true;
+				renderer.gammaOutput = true;
+
+				renderer.shadowMapEnabled = true;
+				renderer.shadowMapCullFace = THREE.CullFaceBack;
+
+				container.appendChild (renderer.domElement);
+				
+				// camera control
+				controls = new THREE.OrbitControls (camera, renderer.domElement);
+				
+				
+				controls.zoomSpeed = 0.5;
+				controls.panSpeed = 0.5;
+				
+				controls.minDistance = 2.0;
+				controls.maxDistance = 10.0;
+				
+				//controls.addEventListener('change', render);
+
+				// stats
+				stats = new Stats ();
+				stats.domElement.style.position = 'absolute';
+				stats.domElement.style.top = '0px';
+				stats.domElement.style.leght = '0px';
+				container.appendChild (stats.domElement);
+				
+				// event listener
+				window.addEventListener ('resize', onWindowResize, false);
+				window.addEventListener ('dblclick', onDoubleClick, false);
+				
+				timer = Date.now ();
+				
+				//var fps = 30;
+				//setInterval (animate, 1000 / fps);
+			}
+
+			function addShadowedLight (x, y, z, color, intensity) {
+
+				var directionalLight = new THREE.DirectionalLight (color, intensity);
+				directionalLight.position.set (x, y, z);
+				scene.add (directionalLight);
+
+				directionalLight.castShadow = true;
+
+				var d = 1;
+				directionalLight.shadowCameraLeft = -d;
+				directionalLight.shadowCameraRight = d;
+				directionalLight.shadowCameraTop = d;
+				directionalLight.shadowCameraBottom = -d;
+
+				directionalLight.shadowCameraNear = 1;
+				directionalLight.shadowCameraFar = 4;
+
+				directionalLight.shadowMapWidth = 1024;
+				directionalLight.shadowMapHeight = 1024;
+
+				directionalLight.shadowBias = -0.005;
+				directionalLight.shadowDarkness = 0.15;
+			}
+			
+			function onWindowResize () {
+				
+				camera.aspect = window.innerWidth / window.innerHeight;
+				camera.updateProjectionMatrix ();
+				
+				renderer.setSize (window.innerWidth, window.innerHeight);
+			}
+			
+			function onDoubleClick () {
+				
+				delete uzumaki_mesh.material;
+				
+				amb = Math.random () * 0xffffff;
+				col = Math.random () * 0xffffff;
+				
+				uzumaki_mesh.material = new THREE.MeshPhongMaterial ({ambient: amb, color: col, specular: 0x222222, shininess: 200 });
+			}
+			
+			var finishLoading = false;
+			function animate () {
+				
+				requestAnimationFrame (animate);
+				
+				if (!finishLoading) {
+					
+					if (stlIsLoaded ()) {
+						
+						$("#loading").fadeOut();
+						finishLoading = true;
+					}
+				}
+				
+				rotateMeshes ();
+				render ();
+				
+				stats.update ();
+				controls.update ();
+			}
+			
+			function render () {
+				
+				renderer.render (scene, camera);
+			}
+			
+			function rotateMeshes ()
+			{
+				var dt = timer - Date.now ();
+				timer = Date.now ();
+				
+				var speed = 0.000075;
+				
+				if (stlIsLoaded ()) {
+					uzumaki_mesh.rotation.y += speed * dt;
+					cover_mesh.rotation.y   += speed * dt;
+					base_mesh.rotation.y    += speed * dt;
+					pafif_mesh.rotation.y   += speed * dt;
+					stay_mesh.rotation.y    += speed * dt;
+				}
+			}
+			
+			function stlIsLoaded () {
+				
+				if (!uzumaki_mesh) {
+					return false;
+				}
+				else if (!cover_mesh) {
+					return false;
+				}				
+				else if (!base_mesh) {
+					return false;
+				}
+				else if (!pafif_mesh) {
+					return false;
+				}
+				else if (!stay_mesh) {
+					return false;
+				}
+				
+				return true;
+			}
+
+		</script>
+	</body>
+</html>
