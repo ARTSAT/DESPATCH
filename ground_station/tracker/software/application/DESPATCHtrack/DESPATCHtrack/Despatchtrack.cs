@@ -34,8 +34,6 @@ namespace DESPATCHtrack
             public double elevation { get; set; }
             [DataMember]
             public double azimuth { get; set; }
-//            [DataMember]
-//            public double frequency { get; set; }
             [DataMember]
             public double doppler_down { get; set; }
             [DataMember]
@@ -69,8 +67,6 @@ namespace DESPATCHtrack
             client.QueryString["lon"] = textBox3.Text;
             client.QueryString["alt"] = textBox4.Text;
 
-//            var jsonStr = @"{""time"": 1417436300, ""elevation"": 7.014275933903012, ""azimuth"": 223.29925819880032, ""frequency"": 437318391, ""distance"": 210195729, ""declination"": -29.68670318681606, ""right_ascension"": 22.52960541339547, ""mode"": ""baudot""}";
-
             var jsonStr = client.DownloadString("http://api.artsat.jp/despatch/track.json");
             var serializer = new DataContractJsonSerializer(typeof(DespatchInfo));
             var jsonBytes = Encoding.Unicode.GetBytes(jsonStr);
@@ -79,13 +75,14 @@ namespace DESPATCHtrack
             
 
             textBox5.Text = obj.time.ToString();
-            textBox6.Text = obj.elevation.ToString();
-            textBox7.Text = obj.azimuth.ToString();
+            textBox6.Text = obj.elevation.ToString("N6");
+            textBox7.Text = obj.azimuth.ToString("N6");
             double frequency = 437.325 * obj.doppler_down;
-            textBox8.Text = frequency.ToString();
-            textBox9.Text = obj.distance.ToString();
-            textBox10.Text = obj.declination.ToString();
-            textBox11.Text = obj.right_ascension.ToString();
+            textBox8.Text = frequency.ToString("N6");
+            double distance = obj.distance / 1000d;
+            textBox9.Text = distance.ToString("N0");
+            textBox10.Text = obj.declination.ToString("N6");
+            textBox11.Text = obj.right_ascension.ToString("N6");
             textBox12.Text = obj.phase;
 
         }
@@ -99,11 +96,11 @@ namespace DESPATCHtrack
         {
             DateTime now = DateTime.UtcNow;
             DateTime startTime = new DateTime(2014, 12, 03, 06, 20, 12, 0, DateTimeKind.Utc);
-            DateTime endTime = new DateTime(2014, 12, 23, 06, 20, 0, 0, DateTimeKind.Utc);
+//            DateTime endTime = new DateTime(2015, 01, 02, 06, 20, 0, 0, DateTimeKind.Utc);
             if (now < startTime){
                 now = startTime;
-            }else if(now > endTime){
-                now = endTime;
+//            }else if(now > endTime){
+//                now = endTime;
             }
             dateTimePicker1.Value = now;
         }

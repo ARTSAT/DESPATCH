@@ -64,24 +64,26 @@
             // dateTimePicker1
             // 
             this.dateTimePicker1.CustomFormat = "yyyy/MM/dd HH:mm:ss";
+            this.dateTimePicker1.Font = new System.Drawing.Font("MS UI Gothic", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
             this.dateTimePicker1.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.dateTimePicker1.Location = new System.Drawing.Point(86, 15);
-            this.dateTimePicker1.MaxDate = new System.DateTime(2014, 12, 23, 6, 20, 0, 0);
+            this.dateTimePicker1.Location = new System.Drawing.Point(51, 15);
+            this.dateTimePicker1.MaxDate = new System.DateTime(9997, 12, 31, 23, 59, 0, 0);
             this.dateTimePicker1.MinDate = new System.DateTime(2014, 12, 3, 6, 20, 12, 0);
             this.dateTimePicker1.Name = "dateTimePicker1";
             this.dateTimePicker1.ShowUpDown = true;
-            this.dateTimePicker1.Size = new System.Drawing.Size(163, 19);
+            this.dateTimePicker1.Size = new System.Drawing.Size(138, 19);
             this.dateTimePicker1.TabIndex = 0;
             this.dateTimePicker1.Value = new System.DateTime(2014, 12, 3, 6, 20, 12, 0);
             this.dateTimePicker1.ValueChanged += new System.EventHandler(this.dateTimePicker1_ValueChanged);
             // 
             // textBox1
             // 
-            this.textBox1.Location = new System.Drawing.Point(86, 51);
+            this.textBox1.Location = new System.Drawing.Point(111, 51);
             this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(74, 19);
+            this.textBox1.Size = new System.Drawing.Size(94, 19);
             this.textBox1.TabIndex = 2;
             this.textBox1.Text = "1417587612";
+            this.textBox1.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
             // label1
             // 
@@ -106,7 +108,7 @@
             // 
             this.button1.Location = new System.Drawing.Point(18, 179);
             this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(271, 22);
+            this.button1.Size = new System.Drawing.Size(229, 22);
             this.button1.TabIndex = 5;
             this.button1.Text = "Get DESPATCH Information";
             this.button1.UseVisualStyleBackColor = true;
@@ -117,9 +119,9 @@
             this.label3.AutoSize = true;
             this.label3.Location = new System.Drawing.Point(17, 210);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(30, 12);
+            this.label3.Size = new System.Drawing.Size(94, 12);
             this.label3.TabIndex = 6;
-            this.label3.Text = "Time";
+            this.label3.Text = "Time (Unix Time)";
             // 
             // label4
             // 
@@ -144,18 +146,18 @@
             this.label6.AutoSize = true;
             this.label6.Location = new System.Drawing.Point(17, 284);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(58, 12);
+            this.label6.Size = new System.Drawing.Size(92, 12);
             this.label6.TabIndex = 9;
-            this.label6.Text = "Frequency";
+            this.label6.Text = "Frequency (MHz)";
             // 
             // label7
             // 
             this.label7.AutoSize = true;
             this.label7.Location = new System.Drawing.Point(17, 314);
             this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(71, 12);
+            this.label7.Size = new System.Drawing.Size(77, 12);
             this.label7.TabIndex = 10;
-            this.label7.Text = "Distance (m)";
+            this.label7.Text = "Distance (km)";
             // 
             // label8
             // 
@@ -213,89 +215,102 @@
             // 
             // textBox2
             // 
-            this.textBox2.Location = new System.Drawing.Point(75, 25);
+            this.textBox2.Font = new System.Drawing.Font("MS UI Gothic", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
+            this.textBox2.Location = new System.Drawing.Point(100, 25);
             this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(74, 19);
+            this.textBox2.Size = new System.Drawing.Size(71, 19);
             this.textBox2.TabIndex = 18;
             this.textBox2.Text = "35.610514";
+            this.textBox2.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
             // textBox3
             // 
-            this.textBox3.Location = new System.Drawing.Point(75, 47);
+            this.textBox3.Font = new System.Drawing.Font("MS UI Gothic", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
+            this.textBox3.Location = new System.Drawing.Point(100, 47);
             this.textBox3.Name = "textBox3";
-            this.textBox3.Size = new System.Drawing.Size(74, 19);
+            this.textBox3.Size = new System.Drawing.Size(71, 19);
             this.textBox3.TabIndex = 19;
             this.textBox3.Text = "139.351106";
+            this.textBox3.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
             // textBox4
             // 
-            this.textBox4.Location = new System.Drawing.Point(75, 69);
+            this.textBox4.Location = new System.Drawing.Point(100, 69);
             this.textBox4.Name = "textBox4";
-            this.textBox4.Size = new System.Drawing.Size(74, 19);
+            this.textBox4.Size = new System.Drawing.Size(71, 19);
             this.textBox4.TabIndex = 20;
             this.textBox4.Text = "148";
+            this.textBox4.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
             // textBox5
             // 
-            this.textBox5.Location = new System.Drawing.Point(86, 207);
+            this.textBox5.Location = new System.Drawing.Point(111, 207);
             this.textBox5.Name = "textBox5";
             this.textBox5.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.textBox5.Size = new System.Drawing.Size(101, 19);
+            this.textBox5.Size = new System.Drawing.Size(94, 19);
             this.textBox5.TabIndex = 21;
+            this.textBox5.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
             // textBox6
             // 
-            this.textBox6.Location = new System.Drawing.Point(86, 230);
+            this.textBox6.Location = new System.Drawing.Point(111, 230);
             this.textBox6.Name = "textBox6";
             this.textBox6.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.textBox6.Size = new System.Drawing.Size(101, 19);
+            this.textBox6.Size = new System.Drawing.Size(94, 19);
             this.textBox6.TabIndex = 22;
+            this.textBox6.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
             // textBox7
             // 
-            this.textBox7.Location = new System.Drawing.Point(86, 256);
+            this.textBox7.Location = new System.Drawing.Point(111, 256);
             this.textBox7.Name = "textBox7";
-            this.textBox7.Size = new System.Drawing.Size(101, 19);
+            this.textBox7.Size = new System.Drawing.Size(94, 19);
             this.textBox7.TabIndex = 23;
+            this.textBox7.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
             // textBox8
             // 
-            this.textBox8.Location = new System.Drawing.Point(86, 281);
+            this.textBox8.Location = new System.Drawing.Point(111, 281);
             this.textBox8.Name = "textBox8";
-            this.textBox8.Size = new System.Drawing.Size(101, 19);
+            this.textBox8.Size = new System.Drawing.Size(94, 19);
             this.textBox8.TabIndex = 24;
+            this.textBox8.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
             // textBox9
             // 
-            this.textBox9.Location = new System.Drawing.Point(86, 311);
+            this.textBox9.Location = new System.Drawing.Point(111, 311);
             this.textBox9.Name = "textBox9";
-            this.textBox9.Size = new System.Drawing.Size(101, 19);
+            this.textBox9.Size = new System.Drawing.Size(94, 19);
             this.textBox9.TabIndex = 25;
+            this.textBox9.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
             // textBox10
             // 
             this.textBox10.Location = new System.Drawing.Point(111, 342);
             this.textBox10.Name = "textBox10";
-            this.textBox10.Size = new System.Drawing.Size(136, 19);
+            this.textBox10.Size = new System.Drawing.Size(94, 19);
             this.textBox10.TabIndex = 26;
+            this.textBox10.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
             // textBox11
             // 
             this.textBox11.Location = new System.Drawing.Point(111, 367);
             this.textBox11.Name = "textBox11";
-            this.textBox11.Size = new System.Drawing.Size(136, 19);
+            this.textBox11.Size = new System.Drawing.Size(94, 19);
             this.textBox11.TabIndex = 27;
+            this.textBox11.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
             // textBox12
             // 
-            this.textBox12.Location = new System.Drawing.Point(86, 391);
+            this.textBox12.Location = new System.Drawing.Point(111, 391);
             this.textBox12.Name = "textBox12";
-            this.textBox12.Size = new System.Drawing.Size(72, 19);
+            this.textBox12.Size = new System.Drawing.Size(94, 19);
             this.textBox12.TabIndex = 28;
+            this.textBox12.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // button2
             // 
-            this.button2.Location = new System.Drawing.Point(168, 46);
+            this.button2.Location = new System.Drawing.Point(196, 46);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(40, 21);
             this.button2.TabIndex = 29;
@@ -314,14 +329,14 @@
             this.groupBox1.Controls.Add(this.label11);
             this.groupBox1.Location = new System.Drawing.Point(11, 77);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(246, 98);
+            this.groupBox1.Size = new System.Drawing.Size(250, 98);
             this.groupBox1.TabIndex = 30;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Observer\'s Location";
             // 
             // button3
             // 
-            this.button3.Location = new System.Drawing.Point(263, 12);
+            this.button3.Location = new System.Drawing.Point(206, 12);
             this.button3.Name = "button3";
             this.button3.Size = new System.Drawing.Size(41, 22);
             this.button3.TabIndex = 31;
@@ -334,7 +349,7 @@
             this.AllowDrop = true;
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(318, 415);
+            this.ClientSize = new System.Drawing.Size(280, 415);
             this.Controls.Add(this.button3);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.textBox12);
@@ -359,7 +374,7 @@
             this.Controls.Add(this.textBox1);
             this.Controls.Add(this.dateTimePicker1);
             this.Name = "Despatchtrack";
-            this.Text = "DESPATCHtrack20141213";
+            this.Text = "DESPATCHtrack20150124";
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             this.ResumeLayout(false);
