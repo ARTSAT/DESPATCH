@@ -13,7 +13,7 @@ http://mokk.net/despatch3d/
 
 ## Screen shot
 
-<img src="https://raw.githubusercontent.com/motokimura/Despatch3DViewer/master/screen_capture.png" />
+<img src="https://raw.githubusercontent.com/ARTSAT/DESPATCH/master/ground_station/utility/software/Despatch3DViewer/screen_capture.png" />
 
 ## Requirement
 
